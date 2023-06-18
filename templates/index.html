@@ -10,6 +10,7 @@
 	<title>{{ name }} | {{ motd }}</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="icon" type="image/png" href="{{ logo }}">
 	<link rel="stylesheet" href="/assets/css/main.css" />
 	<noscript>
 		<link rel="stylesheet" href="/assets/css/noscript.css" />
@@ -25,7 +26,7 @@
 		<nav id="nav">
 			<a href="#" class="icon solid fa-home"><span>主页</span></a>
 			<a href="#preview" class="icon solid fa-folder"><span>服务器预览</span></a>
-			<a href="#contact" class="icon solid fa-envelope"><span>联系方式</span></a>
+			<a href="#contact" class="icon solid fa-envelope"><span>加入我们</span></a>
 			<a href="https://github.com/GamerNoTitle/CraftMon" class="icon brands fa-github"
 				target="_blank"><span>Github</span></a>
 		</nav>
@@ -38,10 +39,16 @@
 				<header>
 					<h1>{{ name }}</h1>
 					<p>{{ motd }}</p>
+					{% if show_info %}
+					<p>服务器地址：<strong>{{host}}:{{port}}</strong></p>
+					{% endif %}
+					<hr>
 					<p>当前在线人数：{{ current }}/{{ maxp }}</p>
-					
+					{% for player in player_list %}
+					<p><img src={{player.img}} height="40px"> {{player.name}}</p>
+					{% endfor %}
 				</header>
-				<a href="#work" class="jumplink pic">
+				<a href="#preview" class="jumplink pic">
 					<span class="arrow icon solid fa-chevron-right"><span>查看服务器展示</span></span>
 					<img src="{{ logo }}" alt="" />
 				</a>
@@ -53,7 +60,7 @@
 					<h2>{{ preview_title }}</h2>
 				</header>
 				<p>
-					{{ preview_descr }}
+					{{ preview_descr|safe }}
 				</p>
 				<section>
 					<div class="row">
@@ -71,7 +78,7 @@
 				<header>
 					<h2>加入我们</h2>
 				</header>
-					{{ join_content|safe }}
+				{{ join_content|safe }}
 			</article>
 
 		</div>
@@ -79,7 +86,12 @@
 		<!-- Footer -->
 		<div id="footer">
 			<ul class="copyright">
-				<li>&copy; GamerNoTitle.</li>
+				<li>Copyright &copy; 2022-
+					<script>document.write(new Date().getFullYear())</script> <a href="https://bili33.top"
+						target="_blank"><u>GamerNoTitle</u></a>.
+				</li>
+				<li>Open-Source project <a href="https://github.com/GamerNoTitle/CraftMon"
+						target="_blank"><u>CraftMon</u></a> is now avaliabel on Github.</li>
 				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 			</ul>
 		</div>
