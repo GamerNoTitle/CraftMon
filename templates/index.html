@@ -7,7 +7,11 @@
 <html>
 
 <head>
+	{% if offline %}
+	<title>{{ name }}</title>
+	{% else %}
 	<title>{{ name }} | {{ motd }}</title>
+	{% endif %}
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="icon" type="image/png" href="{{ logo }}">
@@ -38,15 +42,21 @@
 			<article id="home" class="panel intro">
 				<header>
 					<h1>{{ name }}</h1>
+					{% if offline %}
+					<p>服务器目前不在线~</p>
+					{% else %}
 					<p>{{ motd }}</p>
+					{% endif %}
 					{% if show_info %}
 					<p>服务器地址：<strong>{{host}}:{{port}}</strong></p>
 					{% endif %}
+					{% if not offline %}
 					<hr>
 					<p>当前在线人数：{{ current }}/{{ maxp }}</p>
 					{% for player in player_list %}
 					<p><img src={{player.img}} height="40px"> {{player.name}}</p>
 					{% endfor %}
+					{% endif %}
 				</header>
 				<a href="#preview" class="jumplink pic">
 					<span class="arrow icon solid fa-chevron-right"><span>查看服务器展示</span></span>

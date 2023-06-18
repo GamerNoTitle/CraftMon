@@ -4,7 +4,7 @@ import re
 
 class Players:
     online: int
-    max: int | None
+    max: int
 
     def __init__(self, online: int, max: int | None, player_list: list | None):
         self.online = online
