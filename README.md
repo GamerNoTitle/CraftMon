@@ -69,3 +69,9 @@ python app.py
 然后你就可以访问`http://127.0.0.1:8080`来查看网站了！
 
 ## 预览图
+
+![](http://cdn.bili33.top/gh/Vikutorika/newassets@master/img/Github/CraftMon/msedge-20230618-184807.png)
+
+![](http://cdn.bili33.top/gh/Vikutorika/newassets@master/img/Github/CraftMon/msedge-20230618-184855.png)
+
+![](http://cdn.bili33.top/gh/Vikutorika/newassets@master/img/Github/CraftMon/msedge-20230618-184918.png)
