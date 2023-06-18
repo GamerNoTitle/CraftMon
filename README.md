@@ -1,16 +1,17 @@
 # CraftMon
 
-就是我之前那个[服务器展示面板 Minecraft-Server-Status](https://github.com/GamerNoTitle/Minecraft-Server-Status)的重置版啦，其实我本身不怎么会用PHP的，那个版本大部分的东西都是拿了别人现成的轮子做的，到头来维护真的很很很狠很麻烦，所以就用我熟悉的Python做了一个flask版的
+就是我之前那个[服务器展示面板 Minecraft-Server-Status](https://github.com/GamerNoTitle/Minecraft-Server-Status)的重置版啦，其实我本身不怎么会用 PHP 的，那个版本大部分的东西都是拿了别人现成的轮子做的，到头来维护真的很很很狠很麻烦，所以就用我熟悉的 Python 做了一个 flask 版的
 
 ## 配置程序
 
-首先你得装好Python，然后用pip安装一下轮子
+首先你得装好 Python（请使用 Python3.10 及以上），然后用 pip 安装一下轮子
 
 ```shell
 pip install -r requirements.txt
 ```
 
 然后修改`config.yml`里面的内容，里面应该长这样（有我的示例）
+
 ```yaml
 web:
   host: 0.0.0.0
@@ -28,7 +29,7 @@ server:
   # 查询信息实际用的是query这个端口，在server.properties里面有，需要自行设置端口并且把这个功能打开
   query: 10125
   logo: https://cdn.bilicdn.tk/gh/Vikutorika/newassets@master/img/Miscellaneous/EMUnion.jpg
-  preview:  # 服务器预览部分
+  preview: # 服务器预览部分
     title: 嘿！这里是EMUnion
     # 预览界面的描述，可以用html书写
     descr: |
@@ -56,7 +57,7 @@ server:
       - 2023-06-18_18.14.13.png
       - 2023-06-18_18.15.52.png
   contact:
-    content: |  # 这里是加入我们页面的内容，请使用html书写（要不然会很丑）
+    content: | # 这里是加入我们页面的内容，请使用html书写（要不然会很丑）
       <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=zQHSKERVton9xMCctGiSLWAj8S48-BFL&authKey=mbWJxC1uydGIUNeRoiTJamDF1eQbNxT18TvKQbark1Vd2qEcPH5kt%2FW6ZsHFdXaZ&noverify=0&group_code=519383932" target="_blank"><button>加入审核群</button></a>
 ```
 
