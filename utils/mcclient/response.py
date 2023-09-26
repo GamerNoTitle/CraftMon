@@ -45,7 +45,7 @@ class StatusResponse:
         """
         Returns the input string stripped of all Minecraft color/formatting codes.
         documentation on minecraft color/formatting codes:
-        https://minecraft.fandom.com/wiki/Formatting_codes
+        https://minecraft.wiki/w/Formatting_codes
 
         Args:
         cstr (str): The string to remove color codes from.
