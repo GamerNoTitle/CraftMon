@@ -10,7 +10,7 @@
 	{% if offline %}
 	<title>{{ name }}</title>
 	{% else %}
-	<title>{{ name }} | {{ motd }}</title>
+	<title>{{ name }} | {{ title }}</title>
 	{% endif %}
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -45,7 +45,7 @@
 					{% if offline %}
 					<p>服务器目前不在线~</p>
 					{% else %}
-					<p>{{ motd }}</p>
+					<p>{{ motd | safe }}</p>
 					{% endif %}
 					{% if show_info %}
 					<p>服务器地址：<strong>{{host}}:{{port}}</strong></p>
@@ -101,7 +101,7 @@
 						target="_blank"><u>GamerNoTitle</u></a>.
 				</li>
 				<li>Open-Source project <a href="https://github.com/GamerNoTitle/CraftMon"
-						target="_blank"><u>CraftMon</u></a> is now avaliabel on Github.</li>
+						target="_blank"><u>CraftMon</u></a> is now avaliable on Github.</li>
 				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 			</ul>
 		</div>

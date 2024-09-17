@@ -24,12 +24,10 @@ server:
   name: EMUnion
   # 服务器地址
   host: mc.bili33.top
-  # 这个port只是拿来展示的，如果上面关掉了的话可以不动它
+  # 既是获取信息的端口，也是用来展示的端口
   port: 25565
-  # 查询信息实际用的是query这个端口，在server.properties里面有，需要自行设置端口并且把这个功能打开
-  query: 10125
-  logo: https://cdn.bilicdn.tk/gh/Vikutorika/newassets@master/img/Miscellaneous/EMUnion.jpg
-  preview: # 服务器预览部分
+  logo: https://cdn.bili33.top/gh/Vikutorika/newassets@master/img/Miscellaneous/EMUnion.jpg
+  preview:  # 服务器预览部分
     title: 嘿！这里是EMUnion
     # 预览界面的描述，可以用html书写
     descr: |
@@ -57,7 +55,7 @@ server:
       - 2023-06-18_18.14.13.png
       - 2023-06-18_18.15.52.png
   contact:
-    content: | # 这里是加入我们页面的内容，请使用html书写（要不然会很丑）
+    content: |  # 这里是加入我们页面的内容，请使用html书写（要不然会很丑）
       <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=zQHSKERVton9xMCctGiSLWAj8S48-BFL&authKey=mbWJxC1uydGIUNeRoiTJamDF1eQbNxT18TvKQbark1Vd2qEcPH5kt%2FW6ZsHFdXaZ&noverify=0&group_code=519383932" target="_blank"><button>加入审核群</button></a>
 ```
 
@@ -71,7 +69,7 @@ python app.py
 
 ## 预览图
 
-![](http://cdn.bili33.top/gh/Vikutorika/newassets@master/img/Github/CraftMon/msedge-20230618-184807.png)
+![](http://cdn.bili33.top/gh/Vikutorika/newassets@master/img/Github/CraftMon/msedge_tZELLHwXqw.png)
 
 ![](http://cdn.bili33.top/gh/Vikutorika/newassets@master/img/Github/CraftMon/msedge-20230618-184855.png)
 
