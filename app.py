@@ -97,27 +97,16 @@ def home():
     offline = False
     try:
         server = JavaServer.lookup(f"{mc_host}:{mc_port}")
-        status = server.status()
-        players = server.query().players.names
-        # return {
-        #     "version": status.version.name,
-        #     "protocol_version": status.version.protocol,
-        #     "players": players,
-        #     "players_online": status.players.online,
-        #     "players_max": status.players.max,
-        #     "motd": status.description,
-        #     "latency": round(status.latency, 2),
-        #     "online": True,
-        #     "error": False,
-        #     "msg": "success"
-        # }
-    except (TimeoutError, ConnectionRefusedError):
+    except (TimeoutError, ConnectionRefusedError) as e:
         offline = True
     if not offline:
+        status = server.status()
+        try:
+            players = server.query().players.names
+        except (TimeoutError, ConnectionRefusedError) as e:
+            players = []
         cleaned_motd = parse_motd(status.description)
         title = status.motd.to_plain().replace("\n", " ")
-        # cleaned_motd = re.sub(r'§[a-f0-9klmnor]', '', str(status.description))
-        # cleaned_motd = re.sub(r'[^a-zA-Z0-9\s]', '', str(cleaned_motd))
         player_list = []
         for player in players:
             try:
