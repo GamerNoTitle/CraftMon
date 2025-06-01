@@ -103,15 +103,17 @@ def home():
     if not offline:
         try:
             status = server.status()
-            players = server.query().players.names
             cleaned_motd = parse_motd(status.description)
             title = status.motd.to_plain().replace("\n", " ")
             max_players = status.players.max
         except (TimeoutError, ConnectionRefusedError, socket.gaierror) as e:
-            players = []
             cleaned_motd = "无法获取服务器状态，服务器可能离线"
             title = "无法获取服务器状态，服务器可能离线"
             max_players = 0
+        try:
+            players = server.query().players.names
+        except (TimeoutError, ConnectionRefusedError, socket.gaierror) as e:
+            players = []
         player_list = []
         for player in players:
             try:
