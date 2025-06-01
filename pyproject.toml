@@ -1,0 +1,12 @@
+[project]
+name = "craftmon"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "flask>=3.1.1",
+    "mcstatus>=12.0.1",
+    "pyyaml>=6.0.2",
+    "requests>=2.32.3",
+]

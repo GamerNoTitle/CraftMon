@@ -4,6 +4,7 @@ import re
 import requests
 from flask import Flask, render_template, send_from_directory
 from mcstatus.server import JavaServer
+import socket
 
 app = Flask(__name__)
 app.template_folder = 'templates'
@@ -97,16 +98,20 @@ def home():
     offline = False
     try:
         server = JavaServer.lookup(f"{mc_host}:{mc_port}")
-    except (TimeoutError, ConnectionRefusedError) as e:
+    except (TimeoutError, ConnectionRefusedError, socket.gaierror) as e:
         offline = True
     if not offline:
-        status = server.status()
         try:
+            status = server.status()
             players = server.query().players.names
-        except (TimeoutError, ConnectionRefusedError) as e:
+            cleaned_motd = parse_motd(status.description)
+            title = status.motd.to_plain().replace("\n", " ")
+            max_players = status.players.max
+        except (TimeoutError, ConnectionRefusedError, socket.gaierror) as e:
             players = []
-        cleaned_motd = parse_motd(status.description)
-        title = status.motd.to_plain().replace("\n", " ")
+            cleaned_motd = "无法获取服务器状态，服务器可能离线"
+            title = "无法获取服务器状态，服务器可能离线"
+            max_players = 0
         player_list = []
         for player in players:
             try:
@@ -126,7 +131,7 @@ def home():
                             show_info = mc_show_info,
                             motd = cleaned_motd,
                             current = len(players),
-                            maxp = status.players.max,
+                            maxp = max_players,
                             logo = mc_logo,
                             preview_title = mc_preview_title,
                             preview_descr = mc_preview_descr,
