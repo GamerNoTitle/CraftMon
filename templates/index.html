@@ -19,6 +19,16 @@
 	<noscript>
 		<link rel="stylesheet" href="/assets/css/noscript.css" />
 	</noscript>
+	<style>
+		#player-list {
+			overflow-y: auto !important;
+			max-height: 110px;
+		}
+
+		body {
+			overflow-y: hidden;
+		}
+	</style>
 </head>
 
 <body class="is-preload">
@@ -53,9 +63,11 @@
 					{% if not offline %}
 					<hr>
 					<p>当前在线人数：{{ current }}/{{ maxp }}</p>
-					{% for player in player_list %}
-					<p><img src={{player.img}} height="40px"> {{player.name}}</p>
-					{% endfor %}
+					<div id="player-list">
+						{% for player in player_list %}
+						<p><img src={{player.img}} height="40px"> {{player.name}}</p>
+						{% endfor %}
+					</div>
 					{% endif %}
 				</header>
 				<a href="#preview" class="jumplink pic">

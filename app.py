@@ -98,7 +98,7 @@ def home():
     offline = False
     try:
         server = JavaServer.lookup(f"{mc_host}:{mc_port}")
-    except (TimeoutError, ConnectionRefusedError, socket.gaierror) as e:
+    except (TimeoutError, ConnectionRefusedError, socket.gaierror, ConnectionRefusedError) as e:
         offline = True
     if not offline:
         try:
@@ -111,8 +111,8 @@ def home():
             title = "无法获取服务器状态，服务器可能离线"
             max_players = 0
         try:
-            players = server.query().players.names
-        except (TimeoutError, ConnectionRefusedError, socket.gaierror) as e:
+            players = server.query().players.list
+        except (TimeoutError, ConnectionRefusedError, socket.gaierror, ConnectionRefusedError) as e:
             players = []
         player_list = []
         for player in players:
@@ -123,7 +123,7 @@ def home():
                     img = f'https://crafatar.com/renders/head/{uuid}'
                 else:
                     img = 'https://crafatar.com/renders/head/aaaaaaaa-cf6b-4485-bef9-3957e7b7f509'
-            except requests.exceptions.ReadTimeout:
+            except (requests.exceptions.ReadTimeout, requests.exceptions.ConnectionError):
                 img = 'https://crafatar.com/renders/head/aaaaaaaa-cf6b-4485-bef9-3957e7b7f509'
             player_list.append({'name': player, 'img': img})
         return render_template('index.html',
